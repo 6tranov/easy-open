@@ -1,0 +1,26 @@
+:emoji::type :changes
+
+# Reasons for changes
+:reasons_for_changes
+
+# Footer(Optional)
+:footer
+
+
+# ===:emoji::type===
+  - :+1:feat  
+    A new feature
+  - :bug:fix  
+    A bug fix
+  - :memo:docs  
+    Documentation only changes
+  - :lipstick:style  
+    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+  - :recycle:refactor  
+    A code change that neither fixes a bug nor adds a feature
+  - :racehorse:perf  
+    A code change that improves performance
+  - :white_check_mark:test  
+    Adding missing or correcting existing tests
+  - :construction_worker:chore  
+    Changes to the build process or auxiliary tools and libraries such as documentation generation

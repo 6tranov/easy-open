@@ -1,0 +1,32 @@
+name: Other
+description: Report an issue
+title: "[Other] :title"
+labels: ["other"]
+assignees:
+  - 6tranov
+body:
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: exx. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: issue
+    attributes:
+      label: Issue
+      description: A clear and concise description of the issue.
+      placeholder: tell me the issue.
+      value: "I came up with the issue like ..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](../../CODE_OF_CONDUCT.md).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
