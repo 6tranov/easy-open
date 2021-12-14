@@ -1,6 +1,8 @@
 class Validation {
-    public static isNullOrUndefined(object : any) {
-        return (typeof object === "undefined" || object === null);
+    public static NullUndefinedCheck(object: any, errorMessage: string): void {
+        if (typeof object === "undefined" || object === null) {
+            throw new Error(errorMessage);
+        }
     }
 }
 

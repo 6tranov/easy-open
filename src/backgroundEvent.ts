@@ -1,4 +1,5 @@
-import {BACKGROUND_STATE,BackgroundState} from './backgroundState';
+import { BACKGROUND_STATE, BackgroundState } from './backgroundState';
+import { Validation } from './validation';
 
 class BackgroundEvent {
     //#region Field
@@ -12,17 +13,16 @@ class BackgroundEvent {
     //#endregion
 
     addHandler(backgroundHandler) {
-        chrome.runtime.onMessage.addListener((message, sender : any, sendResponse : any) => {
+        chrome.runtime.onMessage.addListener((message, sender: any, sendResponse: any) => {
             //#region Input Validation
-            if (Validation.isNullOrUndefined(message)) throw new Error("message is null or undefined.");
+            Validation.NullUndefinedCheck(message, "message is null or undefined.");
+            Validation.NullUndefinedCheck(message.backgroundStatus, "message.backgroundStatus is null or undefined.");
             //#endregion
-            if (!Validation.isNullOrUndefined(message.backgroundStatus)) {
-                let backgroundStatus = message.backgroundStatus;
-                if (!BackgroundState.isCorrectBackgroundStatus(backgroundStatus)) throw new Error(backgroundStatus + "is not in BackgroundEvent.backgroundState.");
-                if (backgroundStatus === this.backgroundStatus) {
-                    delete message.backgroundStatus;
-                    backgroundHandler(message, sender, sendResponse);
-                }
+            let backgroundStatus = message.backgroundStatus;
+            if (!BackgroundState.isCorrectBackgroundStatus(backgroundStatus)) throw new Error(backgroundStatus + "is not in BackgroundEvent.backgroundState.");
+            if (backgroundStatus === this.backgroundStatus) {
+                delete message.backgroundStatus;
+                backgroundHandler(message, sender, sendResponse);
             }
         });
     }
