@@ -1,5 +1,6 @@
 import { Validation } from './validation';
 import { BackgroundEvent } from './backgroundEvent';
+import { IsCorrectPage } from './isCorrectPage';
 
 class PageActionMaker {
     //#region Field
@@ -10,11 +11,13 @@ class PageActionMaker {
     constructor(getURLs, isCorrectPage) {
         //#region Input Validation
         if (Validation.isNullOrUndefined(getURLs)) throw new Error("getURLs is null or undefined.");
-        this.getURLs = getURLs;
-        if (!Validation.isNullOrUndefined(isCorrectPage)) {
-            this.isCorrectPage = isCorrectPage;
-        }
         //#endregion
+        this.getURLs = getURLs;
+
+        //#region Input Validation
+        if (Validation.isNullOrUndefined(isCorrectPage)) return;
+        //#endregion
+        this.isCorrectPage = isCorrectPage;
     }
     //#endregion
 
