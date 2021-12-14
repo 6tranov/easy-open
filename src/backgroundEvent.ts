@@ -11,17 +11,14 @@ class BackgroundEvent {
     }
     //#endregion
 
-    static isCorrectBackgroundStatus(status) {
-        return Object.values(BackgroundEvent.backgroundState).includes(status);
-    }
     addHandler(backgroundHandler) {
-        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        chrome.runtime.onMessage.addListener((message, sender : any, sendResponse : any) => {
             //#region Input Validation
             if (Validation.isNullOrUndefined(message)) throw new Error("message is null or undefined.");
             //#endregion
             if (!Validation.isNullOrUndefined(message.backgroundStatus)) {
                 let backgroundStatus = message.backgroundStatus;
-                if (!BackgroundEvent.isCorrectBackgroundStatus(backgroundStatus)) throw new Error(backgroundStatus + "is not in BackgroundEvent.backgroundState.");
+                if (!BackgroundState.isCorrectBackgroundStatus(backgroundStatus)) throw new Error(backgroundStatus + "is not in BackgroundEvent.backgroundState.");
                 if (backgroundStatus === this.backgroundStatus) {
                     delete message.backgroundStatus;
                     backgroundHandler(message, sender, sendResponse);
