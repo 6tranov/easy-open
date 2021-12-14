@@ -5,4 +5,10 @@ enum BACKGROUND_STATE {
     NOTIFY_NO_CONTENT_TO_OPEN
 }
 
-export {BACKGROUND_STATE};
+class BackgroundState {
+    public static isCorrectBackgroundStatus(status: BACKGROUND_STATE) {
+        return Object.values(BACKGROUND_STATE).includes(status);
+    }
+}
+
+export { BACKGROUND_STATE, BackgroundState };

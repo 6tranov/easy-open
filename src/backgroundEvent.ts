@@ -1,4 +1,4 @@
-import {BACKGROUND_STATE} from './backgroundState';
+import {BACKGROUND_STATE,BackgroundState} from './backgroundState';
 
 class BackgroundEvent {
     //#region Field
