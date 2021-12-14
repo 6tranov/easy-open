@@ -14,6 +14,7 @@ class BackgroundEvent {
     }
     //#endregion
 
+    //#region Function
     addHandler(backgroundHandler: BackgroundHandler) {
         //#region Input Validation
         Validation.NullUndefinedCheck(backgroundHandler, "backgroundHandler is null or undefined.");
@@ -41,6 +42,7 @@ class BackgroundEvent {
         message.backgroundStatus = this.backgroundStatus;
         chrome.runtime.sendMessage(extensionId, message, options, responseCallBack);
     }
+    //#endregion
 
     //#region Instance maker
     static get enablePageActionEvent(): BackgroundEvent {
