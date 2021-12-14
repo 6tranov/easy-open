@@ -59,3 +59,5 @@ class BackgroundEvent {
     }
     //#endregion
 }
+
+export { BackgroundEvent };
