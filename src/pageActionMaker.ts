@@ -8,9 +8,9 @@ class PageActionMaker {
     //#endregion
 
     //#region Constructor
-    constructor(getURLs, isCorrectPage) {
+    constructor(getURLs, isCorrectPage: IsCorrectPage) {
         //#region Input Validation
-        if (Validation.isNullOrUndefined(getURLs)) throw new Error("getURLs is null or undefined.");
+        Validation.NullUndefinedCheck(getURLs, "getURLs is null or undefined.")
         //#endregion
         this.getURLs = getURLs;
 

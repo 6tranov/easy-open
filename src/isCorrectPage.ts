@@ -1,5 +1,5 @@
 interface IsCorrectPage {
-    (message: any, sender: any, sendResponse: any): void;
+    (message: any, sender: any, sendResponse: any): boolean;
 }
 
 export { IsCorrectPage };
