@@ -1,43 +1,49 @@
-class ContentEvent{
-    constructor(contentStatus){
+import { CONTENT_STATE, contentState } from './contentState';
+import {Validation} from './validation';
+import {ContentHandler} from './contentHandler';
+
+class ContentEvent {
+    //#region Field
+    contentStatus: CONTENT_STATE;
+    //#endregion
+
+    //#region Constructor
+    constructor(contentStatus: CONTENT_STATE) {
+        Validation.NullUndefinedCheck(contentStatus, "contentStatus is null or undefined.");
         this.contentStatus = contentStatus;
     }
-    static contentState = {
-        enableContentScript:0,
-    }
-    static isCorrectContentStatus(status){
-        return Object.values(ContentEvent.contentState).includes(status);
-    }
-    addHandler(contentHandler){
-        chrome.runtime.onMessage.addListener((message,sender,sendResponse)=>{
+    //#endregion
+
+    addHandler(contentHandler : ContentHandler) {
+        chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             //#region Input Validation
-            if(Validation.isNullOrUndefined(message))throw new Error("message is null or undefined.");
+            if (Validation.isNullOrUndefined(message)) throw new Error("message is null or undefined.");
             //#endregion
-            if(!Validation.isNullOrUndefined(message.contentStatus)){
+            if (!Validation.isNullOrUndefined(message.contentStatus)) {
                 let contentStatus = message.contentStatus;
-                if(!ContentEvent.isCorrectContentStatus(contentStatus))throw new Error(contentStatus + "is not in ContentEvent.contentState.");
-                if(contentStatus === this.contentStatus){
+                if (!ContentEvent.isCorrectContentStatus(contentStatus)) throw new Error(contentStatus + "is not in ContentEvent.contentState.");
+                if (contentStatus === this.contentStatus) {
                     delete message.contentStatus;
-                    contentHandler(message,sender,sendResponse);
+                    contentHandler(message, sender, sendResponse);
                 }
             }
         });
     }
-    Trigger(tabId,message,options,responseCallback){
+    Trigger(tabId, message, options, responseCallback) {
         //#region Input Validation
-        if(Validation.isNullOrUndefined(tabId))throw new Error("tabId is null or undefined.");
-        if(Validation.isNullOrUndefined(message)){
-            message = {contentStatus:this.contentStatus};
-        }else{
-            if(!Validation.isNullOrUndefined(message.contentStatus))throw new Error("message.contentStatus is used by ContentEvent. Please use another key.");
+        if (Validation.isNullOrUndefined(tabId)) throw new Error("tabId is null or undefined.");
+        if (Validation.isNullOrUndefined(message)) {
+            message = { contentStatus: this.contentStatus };
+        } else {
+            if (!Validation.isNullOrUndefined(message.contentStatus)) throw new Error("message.contentStatus is used by ContentEvent. Please use another key.");
             message.contentStatus = this.contentStatus;
         }
         //#endregion
-        chrome.tabs.sendMessage(tabId,message,options,responseCallback);
+        chrome.tabs.sendMessage(tabId, message, options, responseCallback);
     }
-    static get enableContentScript(){
+    static get enableContentScript() {
         return new ContentEvent(ContentEvent.contentState.enableContentScript);
     }
 }
 
-export {ContentEvent};
+export { ContentEvent };
