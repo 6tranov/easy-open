@@ -14,6 +14,7 @@ class ContentEvent {
     }
     //#endregion
 
+    //#region Function
     addHandler(contentHandler: ContentHandler) {
         chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             //#region Input Validation
@@ -21,28 +22,24 @@ class ContentEvent {
             if (Validation.isNullOrUndefined(message.contentStatus)) return;
             if (ContentState.isCorrectContentStatus(message.contentStatus)) throw new Error(message.contentStatus + "is not correct ContentState.");
             //#endregion
-            if (!Validation.isNullOrUndefined(message.contentStatus)) {
-                let contentStatus = message.contentStatus;
-                if (!ContentEvent.isCorrectContentStatus(contentStatus)) throw new Error(contentStatus + "is not in ContentEvent.contentState.");
-                if (contentStatus === this.contentStatus) {
-                    delete message.contentStatus;
-                    contentHandler(message, sender, sendResponse);
-                }
+            //#region Initialization
+            let contentStatus = message.contentStatus;
+            //#endregion
+            if (contentStatus === this.contentStatus) {
+                delete message.contentStatus;
+                contentHandler(message, sender, sendResponse);
             }
         });
     }
-    Trigger(tabId, message, options, responseCallback) {
+    Trigger(tabId: any, message: any, options: any, responseCallback) {
         //#region Input Validation
-        if (Validation.isNullOrUndefined(tabId)) throw new Error("tabId is null or undefined.");
-        if (Validation.isNullOrUndefined(message)) {
-            message = { contentStatus: this.contentStatus };
-        } else {
-            if (!Validation.isNullOrUndefined(message.contentStatus)) throw new Error("message.contentStatus is used by ContentEvent. Please use another key.");
-            message.contentStatus = this.contentStatus;
-        }
+        Validation.NullUndefinedCheck(tabId, "tabId is null or undefined.")
+        if (!Validation.isNullOrUndefined(message.contentStatus)) throw new Error("message.contentStatus is used by ContentEvent. Please use another key.");
         //#endregion
+        message.contentStatus = this.contentStatus;
         chrome.tabs.sendMessage(tabId, message, options, responseCallback);
     }
+    //#endregion
 
     //#region Instance maker
     static get enableContentScriptEvent() {
