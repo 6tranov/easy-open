@@ -1,5 +1,6 @@
 import { BACKGROUND_STATE, BackgroundState } from './backgroundState';
 import { Validation } from './validation';
+import {BackgroundHandler} from './backgroundHandler';
 
 class BackgroundEvent {
     //#region Field
@@ -8,18 +9,24 @@ class BackgroundEvent {
 
     //#region Constructor
     constructor(backgroundStatus: BACKGROUND_STATE) {
+        Validation.NullUndefinedCheck(backgroundStatus,"backgroundStatus is null or undefined.");
         this.backgroundStatus = backgroundStatus;
     }
     //#endregion
 
-    addHandler(backgroundHandler) {
-        chrome.runtime.onMessage.addListener((message, sender: any, sendResponse: any) => {
+    addHandler(backgroundHandler : BackgroundHandler) {
+        //#region Input Validation
+        Validation.NullUndefinedCheck(backgroundHandler,"backgroundHandler is null or undefined.");
+        //#endregion
+        chrome.runtime.onMessage.addListener((message : any, sender: any, sendResponse: any) => {
             //#region Input Validation
             Validation.NullUndefinedCheck(message, "message is null or undefined.");
             Validation.NullUndefinedCheck(message.backgroundStatus, "message.backgroundStatus is null or undefined.");
+            if (!BackgroundState.isCorrectBackgroundStatus(message.backgroundStatus)) throw new Error(message.backgroundStatus + "is not in BackgroundEvent.backgroundState.");
             //#endregion
+            //#region Initialization
             let backgroundStatus = message.backgroundStatus;
-            if (!BackgroundState.isCorrectBackgroundStatus(backgroundStatus)) throw new Error(backgroundStatus + "is not in BackgroundEvent.backgroundState.");
+            //#endregion
             if (backgroundStatus === this.backgroundStatus) {
                 delete message.backgroundStatus;
                 backgroundHandler(message, sender, sendResponse);
