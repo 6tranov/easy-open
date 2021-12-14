@@ -1,6 +1,6 @@
-import { CONTENT_STATE, contentState } from './contentState';
-import {Validation} from './validation';
-import {ContentHandler} from './contentHandler';
+import { CONTENT_STATE, ContentState } from './contentState';
+import { Validation } from './validation';
+import { ContentHandler } from './contentHandler';
 
 class ContentEvent {
     //#region Field
@@ -14,12 +14,12 @@ class ContentEvent {
     }
     //#endregion
 
-    addHandler(contentHandler : ContentHandler) {
+    addHandler(contentHandler: ContentHandler) {
         chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             //#region Input Validation
-            Validation.NullUndefinedCheck(message,"message is null or undefined.");
-            if(Validation.isNullOrUndefined(message.contentStatus))return;
-            if(ContentEvent.)
+            Validation.NullUndefinedCheck(message, "message is null or undefined.");
+            if (Validation.isNullOrUndefined(message.contentStatus)) return;
+            if (ContentState.isCorrectContentStatus(message.contentStatus)) throw new Error(message.contentStatus + "is not correct ContentState.");
             //#endregion
             if (!Validation.isNullOrUndefined(message.contentStatus)) {
                 let contentStatus = message.contentStatus;
