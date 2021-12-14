@@ -5,7 +5,7 @@ import { GetURLs } from './getURLs';
 
 class PageActionMaker {
     //#region Field
-    private getURLs;
+    private getURLs: GetURLs;
     //#endregion
 
     //#region Constructor
@@ -23,7 +23,7 @@ class PageActionMaker {
     }
     //#endregion
 
-    static getNewURLs(excludedURLs, URLs) {
+    static getNewURLs(excludedURLs: string[], URLs: string[]) {
         //#region Inuput Validation
         Validation.NullUndefinedCheck(excludedURLs, "excludedURLs is null or undefined.")
         Validation.NullUndefinedCheck(URLs, "URLs is null or undefined.")
@@ -35,20 +35,27 @@ class PageActionMaker {
         return true;
     }
     get contentHandler() {
-        return (message, sender, sendResponse) => {
+        return (message: any, sender: any, sendResponse: any) => {
+            //#region Input Validation
+            Validation.NullUndefinedCheck(message, "message is null or undefined.")
+            //#endregion
             if (!this.isCorrectPage(message, sender, sendResponse)) {
                 BackgroundEvent.notifyNoContentToOpenEvent.Trigger(null, null, null, null);
                 return;
             }
             //#region Input Validation
-            if (Validation.isNullOrUndefined(message.excludedURLs)) throw new Error("message.excludedURLs is null or undefined.");
+            Validation.NullUndefinedCheck(message.excludedURLs, "message.excludedURLs is null or undefined.");
+            Validation.NullUndefinedCheck(message.tabLength, "message.tabLength is null or undefined.")
+            //#endregion
+            //#region Initialization
             let excludedURLs = message.excludedURLs;
-            if (Validation.isNullOrUndefined(message.tabLength)) throw new Error("message.tabLength is null or undefined.");
             let tabLength = message.tabLength;
             let URLs = this.getURLs(message, sender, sendResponse);
             let newURLs = PageActionMaker.getNewURLs(excludedURLs, URLs);
-            if (Validation.isNullOrUndefined(newURLs.length)) throw new Error("newURLs.length is null or undefined.");
             //#endregion
+            //#region Input Validation
+            Validation.NullUndefinedCheck(newURLs.length, "newURLs.length is null or undefined.");
+            //#region
             if (newURLs.length > 0) {
                 if (tabLength === 1) {
                     BackgroundEvent.openURLsWhenSingleTabEvent.Trigger(null, { newURLs: newURLs }, null, null);
