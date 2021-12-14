@@ -9,4 +9,7 @@
         "src/*",
         "src/**/*"
     ],
+    "exclude": [
+        "src/siteTemplate.ts"
+    ]
 }
