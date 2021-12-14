@@ -18,6 +18,8 @@ class ContentEvent {
         chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             //#region Input Validation
             Validation.NullUndefinedCheck(message,"message is null or undefined.");
+            if(Validation.isNullOrUndefined(message.contentStatus))return;
+            if(ContentEvent.)
             //#endregion
             if (!Validation.isNullOrUndefined(message.contentStatus)) {
                 let contentStatus = message.contentStatus;
