@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "build",
+        "target": "ES5",
+        "lib":["es2017","dom"],
+        "types":["chrome"]
+    },
+    "include": [
+        "src/*",
+        "src/**/*"
+    ],
+}

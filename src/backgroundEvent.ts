@@ -35,13 +35,10 @@ class BackgroundEvent {
     }
     Trigger(extensionId: any, message: any, options: any, responseCallBack) {
         //#region Input Validation
-        if (Validation.isNullOrUndefined(message)) {
-            message = { backgroundStatus: this.backgroundStatus };
-        } else {
-            if (!Validation.isNullOrUndefined(message.backgroundStatus)) throw new Error("message.backgroundStatus is used by BackgroundEvent. Please use another key.");
-            message.backgroundStatus = this.backgroundStatus;
-        }
+        Validation.NullUndefinedCheck(message, "message is null or undefined.");
+        if (!Validation.isNullOrUndefined(message.backgroundStatus)) throw new Error("message.backgroundStatus is used by BackgroundEvent. Please use another key.");
         //#endregion
+        message.backgroundStatus = this.backgroundStatus;
         chrome.runtime.sendMessage(extensionId, message, options, responseCallBack);
     }
 
