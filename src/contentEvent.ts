@@ -17,7 +17,7 @@ class ContentEvent {
     addHandler(contentHandler : ContentHandler) {
         chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             //#region Input Validation
-            if (Validation.isNullOrUndefined(message)) throw new Error("message is null or undefined.");
+            Validation.NullUndefinedCheck(message,"message is null or undefined.");
             //#endregion
             if (!Validation.isNullOrUndefined(message.contentStatus)) {
                 let contentStatus = message.contentStatus;
@@ -41,9 +41,12 @@ class ContentEvent {
         //#endregion
         chrome.tabs.sendMessage(tabId, message, options, responseCallback);
     }
-    static get enableContentScript() {
-        return new ContentEvent(ContentEvent.contentState.enableContentScript);
+
+    //#region Instance maker
+    static get enableContentScriptEvent() {
+        return new ContentEvent(CONTENT_STATE.ENABLE_CONTENT_SCRIPT);
     }
+    //#endregion
 }
 
 export { ContentEvent };

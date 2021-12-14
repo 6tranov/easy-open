@@ -22,7 +22,7 @@ class BackgroundEvent {
         chrome.runtime.onMessage.addListener((message: any, sender: any, sendResponse: any) => {
             //#region Input Validation
             Validation.NullUndefinedCheck(message, "message is null or undefined.");
-            Validation.NullUndefinedCheck(message.backgroundStatus, "message.backgroundStatus is null or undefined.");
+            if(Validation.isNullOrUndefined(message.backgroundStatus))return;
             if (!BackgroundState.isCorrectBackgroundStatus(message.backgroundStatus)) throw new Error(message.backgroundStatus + "is not in BackgroundEvent.backgroundState.");
             //#endregion
             //#region Initialization
