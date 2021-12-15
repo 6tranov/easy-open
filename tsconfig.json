@@ -2,8 +2,14 @@
     "compilerOptions": {
         "outDir": "build/js",
         "target": "ES5",
-        "lib":["es2017","dom"],
-        "types":["chrome"]
+        "lib": [
+            "es2017",
+            "dom"
+        ],
+        "types": [
+            "chrome"
+        ],
+        "module": "ES2015"
     },
     "include": [
         "src/*",
