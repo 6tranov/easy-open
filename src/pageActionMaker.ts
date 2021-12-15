@@ -11,7 +11,7 @@ class PageActionMaker {
     //#region Constructor
     constructor(getURLs: GetURLs, isCorrectPage: IsCorrectPage) {
         //#region Input Validation
-        Validation.NullUndefinedCheck(getURLs, "getURLs is null or undefined.")
+        Validation.NullUndefinedCheck(getURLs, "getURLs is null or undefined. (pageActionMaker.ts constructor)")
         //#endregion
         this.getURLs = getURLs;
 
@@ -25,8 +25,8 @@ class PageActionMaker {
 
     static getNewURLs(excludedURLs: string[], URLs: string[]) {
         //#region Inuput Validation
-        Validation.NullUndefinedCheck(excludedURLs, "excludedURLs is null or undefined.")
-        Validation.NullUndefinedCheck(URLs, "URLs is null or undefined.")
+        Validation.NullUndefinedCheck(excludedURLs, "excludedURLs is null or undefined. (pageActionMaker.ts getNewURLs)")
+        Validation.NullUndefinedCheck(URLs, "URLs is null or undefined. (pageActionMaker.ts getNewURLs)")
         //#endregion
         //引数のURLsから、既に開いているURLsを取り除く。
         return URLs.filter(url => excludedURLs.indexOf(url) == -1);
@@ -37,15 +37,15 @@ class PageActionMaker {
     get contentHandler() {
         return (message: any, sender: any, sendResponse: any) => {
             //#region Input Validation
-            Validation.NullUndefinedCheck(message, "message is null or undefined.")
+            Validation.NullUndefinedCheck(message, "message is null or undefined. (pageActionMaker.ts contentHandler)")
             //#endregion
             if (!this.isCorrectPage(message, sender, sendResponse)) {
                 BackgroundEvent.notifyNoContentToOpenEvent.Trigger(null, null, null, null);
                 return;
             }
             //#region Input Validation
-            Validation.NullUndefinedCheck(message.excludedURLs, "message.excludedURLs is null or undefined.");
-            Validation.NullUndefinedCheck(message.tabLength, "message.tabLength is null or undefined.")
+            Validation.NullUndefinedCheck(message.excludedURLs, "message.excludedURLs is null or undefined. (pageActionMaker.ts contentHandler)");
+            Validation.NullUndefinedCheck(message.tabLength, "message.tabLength is null or undefined. (pageActionMaker.ts contentHandler)")
             //#endregion
             //#region Initialization
             let excludedURLs = message.excludedURLs;
@@ -54,7 +54,7 @@ class PageActionMaker {
             let newURLs = PageActionMaker.getNewURLs(excludedURLs, URLs);
             //#endregion
             //#region Input Validation
-            Validation.NullUndefinedCheck(newURLs.length, "newURLs.length is null or undefined.");
+            Validation.NullUndefinedCheck(newURLs.length, "newURLs.length is null or undefined. (pageActionMaker.ts contentHandler)");
             //#region
             if (newURLs.length > 0) {
                 if (tabLength === 1) {

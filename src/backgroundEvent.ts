@@ -9,7 +9,7 @@ class BackgroundEvent {
 
     //#region Constructor
     constructor(backgroundStatus: BACKGROUND_STATE) {
-        Validation.NullUndefinedCheck(backgroundStatus, "backgroundStatus is null or undefined.");
+        Validation.NullUndefinedCheck(backgroundStatus, "backgroundStatus is null or undefined. (backgroundEvent.ts constructor)");
         this.backgroundStatus = backgroundStatus;
     }
     //#endregion
@@ -17,13 +17,13 @@ class BackgroundEvent {
     //#region Function
     addHandler(backgroundHandler: BackgroundHandler) {
         //#region Input Validation
-        Validation.NullUndefinedCheck(backgroundHandler, "backgroundHandler is null or undefined.");
+        Validation.NullUndefinedCheck(backgroundHandler, "backgroundHandler is null or undefined. (backgroundEvent.ts addHandler)");
         //#endregion
         chrome.runtime.onMessage.addListener((message: any, sender: any, sendResponse: any) => {
             //#region Input Validation
             Validation.NullUndefinedCheck(message, "message is null or undefined.");
             if (Validation.isNullOrUndefined(message.backgroundStatus)) return;
-            if (!BackgroundState.isCorrectBackgroundStatus(message.backgroundStatus)) throw new Error(message.backgroundStatus + "is not correct BackgroundState.");
+            if (!BackgroundState.isCorrectBackgroundStatus(message.backgroundStatus)) throw new Error(message.backgroundStatus + "is not correct BackgroundState. (backgroundEvent.ts addHandler)");
             //#endregion
             //#region Initialization
             let backgroundStatus = message.backgroundStatus;
@@ -36,8 +36,8 @@ class BackgroundEvent {
     }
     Trigger(extensionId: any, message: any, options: any, responseCallBack) {
         //#region Input Validation
-        Validation.NullUndefinedCheck(message, "message is null or undefined.");
-        if (!Validation.isNullOrUndefined(message.backgroundStatus)) throw new Error("message.backgroundStatus is used by BackgroundEvent. Please use another key.");
+        Validation.NullUndefinedCheck(message, "message is null or undefined. (backgroundEvent.ts Trigger)");
+        if (!Validation.isNullOrUndefined(message.backgroundStatus)) throw new Error("message.backgroundStatus is used by BackgroundEvent. Please use another key. (backgroundEvent.ts Trigger)");
         //#endregion
         message.backgroundStatus = this.backgroundStatus;
         chrome.runtime.sendMessage(extensionId, message, options, responseCallBack);
