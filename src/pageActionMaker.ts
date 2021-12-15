@@ -40,7 +40,7 @@ class PageActionMaker {
             Validation.NullUndefinedCheck(message, "message is null or undefined. (pageActionMaker.ts contentHandler)")
             //#endregion
             if (!this.isCorrectPage(message, sender, sendResponse)) {
-                BackgroundEvent.notifyNoContentToOpenEvent.Trigger(null, null, null, null);
+                BackgroundEvent.notifyNoContentToOpenEvent.Trigger(null, {}, null, null);
                 return;
             }
             //#region Input Validation
@@ -63,7 +63,7 @@ class PageActionMaker {
                     BackgroundEvent.openURLsWhenMultipleTabsEvent.Trigger(null, { newURLs: newURLs }, null, null);
                 }
             } else {
-                BackgroundEvent.notifyNoContentToOpenEvent.Trigger(null, null, null, null);
+                BackgroundEvent.notifyNoContentToOpenEvent.Trigger(null, {}, null, null);
             }
         }
     }
