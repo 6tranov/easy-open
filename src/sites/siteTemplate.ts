@@ -9,6 +9,8 @@ ContentEvent.enableContentScriptEvent.addHandler(new PageActionMaker(getURLs, nu
 function getURLs(_message: any, _sender: any, _sendRespons: any): string[] {
     let URLs: string[] = new Array<string>();
 
+
+
     return removeDuplicateURL(URLs);
 }
 function removeDuplicateURL(URLs: string[]): string[] {

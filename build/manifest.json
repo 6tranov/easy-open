@@ -34,10 +34,14 @@
                 "*://qiita.com/search*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/qiita.js"
             ]
         },
@@ -47,10 +51,14 @@
                 "*://search.yahoo.com/search*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/yahoo.js"
             ]
         },
@@ -59,10 +67,14 @@
                 "*://github.com/search*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/github.js"
             ]
         },
@@ -71,10 +83,14 @@
                 "*://teratail.com/search*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/teratail.js"
             ]
         },
@@ -83,10 +99,14 @@
                 "*://duckduckgo.com/*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/duckduckgo.js"
             ]
         },
@@ -96,10 +116,14 @@
                 "*://scholar.google.co.jp/scholar*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/googleScholar.js"
             ]
         },
@@ -108,10 +132,14 @@
                 "*://stackoverflow.com/*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/stackoverflow.js"
             ]
         },
@@ -120,10 +148,14 @@
                 "*://ja.stackoverflow.com/*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/stackoverflowJa.js"
             ]
         },
@@ -132,10 +164,14 @@
                 "*://www.reddit.com/*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/reddit.js"
             ]
         },
@@ -144,10 +180,14 @@
                 "*://zenn.dev/*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
                 "js/backgroundEvent.js",
                 "js/pageActionMaker.js",
-                "js/contentEvent.js",
                 "js/sites/zenn.js"
             ]
         }
