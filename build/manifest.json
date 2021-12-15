@@ -1,0 +1,211 @@
+{
+    "manifest_version": 2,
+    "name": "Easy Open",
+    "version": "1.0",
+    "description": "This extension makes it easy to open all search results.",
+    "icons": {
+        "16": "images/icon_16.png",
+        "48": "images/icon_48.png",
+        "128": "images/icon_128.png"
+    },
+    "page_action": {
+        "default_title": "コンテンツを一括表示"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://www.google.com/search*",
+                "*://www.google.co.jp/search*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/google.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://qiita.com/search*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/qiita.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://search.yahoo.co.jp/search*",
+                "*://search.yahoo.com/search*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/yahoo.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://github.com/search*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/github.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://teratail.com/search*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/teratail.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://duckduckgo.com/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/duckduckgo.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://scholar.google.com/scholar*",
+                "*://scholar.google.co.jp/scholar*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/googleScholar.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://stackoverflow.com/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/stackoverflow.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://ja.stackoverflow.com/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/stackoverflowJa.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.reddit.com/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/reddit.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://zenn.dev/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/zenn.js"
+            ]
+        }
+    ],
+    "background": {
+        "scripts": [
+            "js/debugNotifier.js",
+            "js/validation.js",
+            "js/backgroundState.js",
+            "js/contentState.js",
+            "js/backgroundEvent.js",
+            "js/excludedUrlManager.js",
+            "js/contentEvent.js",
+            "js/background.js"
+        ],
+        "persistent": true
+    },
+    "permissions": [
+        "tabs"
+    ]
+}

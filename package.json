@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@types/chrome": "^0.0.171"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-replace": "^1.1.3"
+  }
+}

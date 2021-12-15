@@ -48,3 +48,8 @@ Please review the pull request. Once that is done, please do the following.
   - update (except for bugs)
   - add
   - remove
+- After editing scripts, please use the following command to generate Javascript files.
+  ```
+  tsc
+  gulp task
+  ```

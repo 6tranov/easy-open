@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "compiledTypescript",
+        "target": "ES5",
+        "lib": [
+            "es2017",
+            "dom"
+        ],
+        "types": [
+            "chrome"
+        ],
+        "module": "ES2015"
+    },
+    "include": [
+        "src/*",
+        "src/**/*"
+    ],
+    "exclude": [
+        "src/sites/siteTemplate.ts"
+    ]
+}
