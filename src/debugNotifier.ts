@@ -1,5 +1,5 @@
 class DebugNotifier {
-    public static enableNotifier: boolean = true;
+    public static enableNotifier: boolean = false;
     public static Notify(detail: string): void {
         if (DebugNotifier.enableNotifier) {
             alert("Debug:" + detail);
