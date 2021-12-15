@@ -20,7 +20,7 @@ class ContentEvent {
             //#region Input Validation
             Validation.NullUndefinedCheck(message, "message is null or undefined. (contentEvent.ts addHandler)");
             if (Validation.isNullOrUndefined(message.contentStatus)) return;
-            if (ContentState.isCorrectContentStatus(message.contentStatus)) throw new Error(message.contentStatus + "is not correct ContentState. (contentEvent.ts addHandler)");
+            if (!ContentState.isCorrectContentStatus(message.contentStatus)) throw new Error(message.contentStatus + " is not correct ContentState. (contentEvent.ts addHandler)");
             //#endregion
             //#region Initialization
             let contentStatus = message.contentStatus;

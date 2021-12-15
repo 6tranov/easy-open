@@ -2,7 +2,7 @@ import { BackgroundEvent } from './backgroundEvent';
 import { ExcludedURLManager } from './excludedUrlManager';
 import { Validation } from './validation';
 import { ContentEvent } from './contentEvent';
-
+import { DebugNotifier } from './debugNotifier';
 
 let eum = new ExcludedURLManager();
 
@@ -13,6 +13,7 @@ BackgroundEvent.notifyNoContentToOpenEvent.addHandler(notifyNoContentToOpenHandl
 
 chrome.pageAction.onClicked.addListener(clickIcon);
 
+DebugNotifier.Notify("background.ts");
 
 //#region Functions
 function enablePageActionHandler(_message: any, sender: any, _sendResponse: any) {

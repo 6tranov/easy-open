@@ -18,6 +18,7 @@
                 "*://www.google.co.jp/search*"
             ],
             "js": [
+                "js/debugNotifier.js",
                 "js/validation.js",
                 "js/backgroundState.js",
                 "js/contentState.js",
@@ -153,6 +154,7 @@
     ],
     "background": {
         "scripts": [
+            "js/debugNotifier.js",
             "js/validation.js",
             "js/backgroundState.js",
             "js/contentState.js",
