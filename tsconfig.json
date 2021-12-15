@@ -10,6 +10,6 @@
         "src/**/*"
     ],
     "exclude": [
-        "src/siteTemplate.ts"
+        "src/sites/siteTemplate.ts"
     ]
 }
