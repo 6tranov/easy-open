@@ -24,7 +24,7 @@ function removeImportExport() {
 function removeImportExportSites() {
     return src(
         [
-            'compiledTypescript/sites/google.js'
+            'compiledTypescript/sites/*.js'
         ]
     ).pipe(
         replace(new RegExp(/export.*\n|export.*\r\n|import.*\n|import.*\r\n/, "g"), (match) => { return ""; },)
