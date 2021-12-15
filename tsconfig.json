@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "build/js",
+        "outDir": "compiledTypescript",
         "target": "ES5",
         "lib": [
             "es2017",
