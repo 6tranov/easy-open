@@ -190,6 +190,54 @@
                 "js/pageActionMaker.js",
                 "js/sites/zenn.js"
             ]
+        },
+        {
+            "matches": [
+                "*://www.bing.com/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/bing.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.ecosia.org/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/ecosia.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://search.goo.ne.jp/*"
+            ],
+            "js": [
+                "js/debugNotifier.js",
+                "js/validation.js",
+                "js/backgroundState.js",
+                "js/contentState.js",
+                "js/contentEvent.js",
+                "js/excludedURLManager.js",
+                "js/backgroundEvent.js",
+                "js/pageActionMaker.js",
+                "js/sites/goo.js"
+            ]
         }
     ],
     "background": {
